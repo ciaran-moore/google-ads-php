@@ -117,7 +117,7 @@ trait GoogleAdsGapicClientTrait
     protected function modifyStreamingCallable(callable &$callable)
     {
         $callable = $this->addFixedHeaderMiddleware($callable);
-        $callable = new ServerStreamingGoogleAdsExceptionMiddleware($callable);
+        $callable = new ServerStreamingGoogleAdsExceptionMiddleware($callable,null);
         $callable = new ServerStreamingGoogleAdsResponseMetadataCallable($callable);
         foreach ($this->streamingMiddlewares as $streamingMiddleware) {
             /** @var GoogleAdsMiddlewareAbstract $streamingMiddleware */
